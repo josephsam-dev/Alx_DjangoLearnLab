@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Library — Books</title>
+</head>
+<body>
+  <header><h1>Library</h1><p><a href="/admin/">Admin</a></p></header>
+  {% if books %}
+    <ul>
+      {% for book in books %}
+        <li><strong>{{ book.title }}</strong>{% if book.author %} — {{ book.author }}{% endif %}{% if book.publication_year %} ({{ book.publication_year }}){% endif %}</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No books yet. Add one in the <a href="/admin/">admin</a>.</p>
+  {% endif %}
+</body>
+</html>
