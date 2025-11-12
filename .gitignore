@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.egg
+
+# Virtualenv
+.env
+.venv
+venv/
+
+# Django
+db.sqlite3
+/staticfiles/
+/media/
+
+# Editor/OS
+.vscode/
+.idea/
+*.swp
+.DS_Store
+# Python cache files
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# SQLite database
+db.sqlite3
+
+# Virtual environments
+venv/
+.env
