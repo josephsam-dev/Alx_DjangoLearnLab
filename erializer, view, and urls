@@ -1,0 +1,24 @@
+[33mf656f40[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m Fix DRF Book API: Add model, serializer, view, and urls
+[33mf9fdb47[m Fix DRF Book API: Add model, serializer, view, and urls
+[33mb905c14[m Add Book model, serializer, view, URLs, and fix settings
+[33mc229f6c[m Add DRF BookList API with serializer, view, and URLs
+[33mbfcaec1[m Add DRF BookList API with serializer, view, and URLs
+[33m0fbefe4[m Fix DRF setup, add Book model, serializer, views, and urls
+[33mb256bce[m Fix admin.py and update Book API implementation
+[33mf3c4031[m Resolve merge conflicts
+[33m3b0c78a[m Resolved conflicts and added DRF API and relationship_app files
+[33mdf8b2c4[m Resolved merge conflicts in manage.py and .gitignore; added relationship_app files
+[33m0bd2c32[m Initial commit: Django + DRF project
+[33m5fff73d[m Update query_samples.py with model relationship queries
+[33m3f12e9c[m Merge branch 'main' of https://github.com/josephsam-dev/Alx_DjangoLearnLab
+[33md5624b0[m Implement advanced model relationships with sample data and query scripts
+[33m026bab3[m Add .gitignore and remove cache/db files
+[33m9b9a3ee[m Resolve merge conflicts: keep local versions
+[33m5c957a5[m Implement advanced model relationships with ForeignKey, ManyToMany, and OneToOne fields
+[33m23edf85[m Initial Django project setup in Sandbox
+[33m94bfe94[m Add .gitignore and remove db.sqlite3 from tracking
+[33me7d7a2a[m Initial Django project setup
+[33m1064689[m Add README for LibraryProject setup
+[33m113ec94[m first commit
+[33mb48db86[m Restructure: place Django project inside outer LibraryProject folder for grader
+[33mcd8b337[m Initial Django project setup: LibraryProject
