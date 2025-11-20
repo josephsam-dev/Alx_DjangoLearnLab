@@ -1,7 +1,8 @@
-from rest_framework import viewsets
-from .models import Books
-from .serializers import BooksSerializer
+# api/views.py
+from rest_framework import generics
+from .models import Book
+from .serializers import BookSerializer
 
-class BooksViewSet(viewsets.ModelViewSet):
-    queryset = Books.objects.all()
-    serializer_class = BooksSerializer
+class BookList(generics.ListAPIView):
+    queryset = Book.objects.all()
+    serializer_class = BookSerializer

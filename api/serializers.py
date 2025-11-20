@@ -1,8 +1,8 @@
+# api/serializers.py
 from rest_framework import serializers
-from .models import Books  # <- plural
+from .models import Book  # must match the model name exactly
 
-class BooksSerializer(serializers.ModelSerializer):
+class BookSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Books
+        model = Book
         fields = '__all__'
-
