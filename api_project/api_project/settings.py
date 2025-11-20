@@ -30,19 +30,20 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-INSTALLED_APPS = [
-    # Default Django apps
+IINSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     # Third-party apps
     'rest_framework',
 
-    # Your project apps
-    'my_api',  # replace with your actual app name
+    # Your apps
+    'api',
+]
 ]
 
 
