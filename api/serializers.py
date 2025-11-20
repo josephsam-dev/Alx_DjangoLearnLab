@@ -1,6 +1,5 @@
-# api/serializers.py
 from rest_framework import serializers
-from .models import Book  # must match the model name exactly
+from .models import Book
 
 class BookSerializer(serializers.ModelSerializer):
     class Meta:
