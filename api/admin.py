@@ -1,10 +1,9 @@
 from django.contrib import admin
 from .models import Book
 
-# Define the admin class first
+@admin.register(Book)
 class BookAdmin(admin.ModelAdmin):
-    list_display = ('title', 'author', 'published_date', 'isbn', 'created_at')
+    list_display = ('id', 'title', 'author', 'published_date', 'isbn', 'created_at')
+    list_filter = ('published_date',)
     search_fields = ('title', 'author', 'isbn')
-
-# Register the model using the admin class
-admin.site.register(Book, BookAdmin)
+    ordering = ('-created_at',)
