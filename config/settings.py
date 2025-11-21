@@ -8,16 +8,21 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
+    # ------------------------------------
+    # Django default apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',  # third-party app
-    'api',             # your app
+    # ------------------------------------
+    # Third-party apps
+    'rest_framework',  # Add this line for Django REST Framework
+    # ------------------------------------
+    # Local apps
+    'api',             # Add this line for your custom Django app
 ]
-
 
 
 MIDDLEWARE = [
