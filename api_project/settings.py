@@ -8,19 +8,20 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
-    "django.contrib.admin",
-    "django.contrib.auth",
-    "django.contrib.contenttypes",
-    "django.contrib.sessions",
-    "django.contrib.messages",
-    "django.contrib.staticfiles",
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
 
-    # third-party
-    "rest_framework",
+    # Third-party apps
+    'rest_framework',
 
-    # local apps
-    "api",
+    # Your apps
+    'api',
 ]
+
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
