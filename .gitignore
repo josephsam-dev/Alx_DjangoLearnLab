@@ -1,18 +1,12 @@
-# Python
+# Python compiled files
 *.pyc
 __pycache__/
-*.pyo
-*.pyd
-.Python
 
 # Virtual environment
 .venv/
 
-# Django
+# Database
 db.sqlite3
-*.log
-/staticfiles/
-.env
 
-# IDEs / editors
-.vscode/
+# Logs
+*.log
