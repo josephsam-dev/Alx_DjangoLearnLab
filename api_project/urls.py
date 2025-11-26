@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 """
 URL configuration for api_project project.
 
@@ -26,4 +27,12 @@ router.register(r'books', BookViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(router.urls)),  # Include API routes
+=======
+from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('api/', include('api.urls')),  # include the api app urls
+>>>>>>> fffbd8bc80147b58f7f8f92c4bec209c333bfdb3
 ]
