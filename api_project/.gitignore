@@ -1,15 +1,20 @@
 # Python
 *.pyc
 __pycache__/
-*.pyo
-*.pyd
-.Python
 
-# Virtual environment
+# Virtual Environment
 .venv/
 
-# Django
+# Database
 db.sqlite3
-*.log
-/staticfiles/
-.env
+
+# VSCode
+.vscode/
+
+# Django migrations (optional: only ignore if you want fresh migrations)
+# api/migrations/*.py
+# !api/migrations/__init__.py
+
+# OS files
+.DS_Store
+Thumbs.db
