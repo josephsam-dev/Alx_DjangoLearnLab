@@ -1,38 +1,39 @@
-# api/views.py
-from rest_framework import generics, permissions
+from rest_framework import generics
+from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated
+
 from .models import Book
 from .serializers import BookSerializer
+from .permissions import IsOwnerOrReadOnly  # custom object-level permission
 
-# 1) ListView — retrieve all books (GET)
-class ListView(generics.ListAPIView):
+# 1) ListView — retrieve all books
+class BookListView(generics.ListAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
-    permission_classes = [permissions.AllowAny, permissions.IsAdminUser]  # public read
+    permission_classes = [IsAuthenticatedOrReadOnly]  # anyone can read
 
-# 2) DetailView — retrieve a single book by ID (GET)
-class DetailView(generics.RetrieveAPIView):
+# 2) DetailView — retrieve a single book by ID
+class BookDetailView(generics.RetrieveAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
-    permission_classes = [permissions.AllowAny]  # public read
+    permission_classes = [IsAuthenticatedOrReadOnly]  # anyone can read
 
-# 3) CreateView — add a new book (POST)
-class CreateView(generics.CreateAPIView):
+# 3) CreateView — add a new book
+class BookCreateView(generics.CreateAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
-    permission_classes = [permissions.IsAuthenticated]  # only authenticated users can create
+    permission_classes = [IsAuthenticated]  # only authenticated users can create
 
     def perform_create(self, serializer):
-        # set the owner to the current user (optional)
         serializer.save(owner=self.request.user)
 
-# 4) UpdateView — modify an existing book (PUT/PATCH)
-class UpdateView(generics.UpdateAPIView):
+# 4) UpdateView — modify an existing book
+class BookUpdateView(generics.UpdateAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
-    permission_classes = [permissions.IsAuthenticated]# only owner can update
+    permission_classes = [IsAuthenticated, IsOwnerOrReadOnly]  # only owner can update
 
-# 5) DeleteView — remove a book (DELETE)
-class DeleteView(generics.DestroyAPIView):
+# 5) DeleteView — remove a book
+class BookDeleteView(generics.DestroyAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
-    permission_classes = [permissions.IsAuthenticated]  # only owner can delete
+    permission_classes = [IsAuthenticated, IsOwnerOrReadOnly]  # only owner can delete
