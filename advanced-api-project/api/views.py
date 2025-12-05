@@ -22,7 +22,7 @@ class BookListView(generics.ListAPIView):
     # enable filtering/search/order on this list view
     filter_backends = [django_filters_rest.DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
     filterset_fields = ['title', 'author', 'publication_year']
-    search_fields = ['title', 'author']
+    search_fields = ['title', 'author__name']
     ordering_fields = ['title', 'publication_year', 'author', 'id']
     ordering = ['title']
 
@@ -87,7 +87,7 @@ class BookViewSet(viewsets.ModelViewSet):
     filterset_fields = ['title', 'author', 'publication_year']
 
     # Search across these fields with ?search=
-    search_fields = ['title', 'author']
+    search_fields = ['title', 'author__name']
 
     # Fields allowed for ordering and default ordering
     ordering_fields = ['title', 'publication_year', 'author', 'id']
