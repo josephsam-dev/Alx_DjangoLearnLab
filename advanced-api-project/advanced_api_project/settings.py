@@ -40,10 +40,10 @@ INSTALLED_APPS = [
 
     # Third-party apps
     "rest_framework",
-
+    "django_filters",
+     'rest_framework.authtoken',
     # Your apps
     "api",
-    "django_filters",
 ]
 
 
@@ -137,7 +137,7 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
     ],
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
+        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
     ],
     'DEFAULT_FILTER_BACKENDS': [
         'django_filters.rest_framework.DjangoFilterBackend',
