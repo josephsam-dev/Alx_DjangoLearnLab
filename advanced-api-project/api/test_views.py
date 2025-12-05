@@ -66,10 +66,9 @@ class BookAPITestCase(APITestCase):
         """Test retrieving a single book by ID."""
         resp = self.client.get(f'/api/books/{self.book1.id}/')
         self.assertEqual(resp.status_code, status.HTTP_200_OK)
-        data = resp.json()
-        self.assertEqual(data['title'], 'Django Unleashed')
-        self.assertEqual(data['publication_year'], 2019)
-        self.assertEqual(data['author'], self.author.id)
+        self.assertEqual(resp.data['title'], 'Django Unleashed')
+        self.assertEqual(resp.data['publication_year'], 2019)
+        self.assertEqual(resp.data['author'], self.author.id)
 
     def test_retrieve_nonexistent_book(self):
         """Test retrieving a book that doesn't exist (404)."""
@@ -85,17 +84,17 @@ class BookAPITestCase(APITestCase):
         # Filter by title exact match
         resp = self.client.get('/api/books/', {'title': 'Django Unleashed'})
         self.assertEqual(resp.status_code, status.HTTP_200_OK)
-        self.assertTrue(any(b['title'] == 'Django Unleashed' for b in resp.json()))
+        self.assertTrue(any(b['title'] == 'Django Unleashed' for b in resp.data))
 
         # Search across title and author
         resp = self.client.get('/api/books/', {'search': 'Django'})
         self.assertEqual(resp.status_code, status.HTTP_200_OK)
-        self.assertTrue(any('Django' in b['title'] for b in resp.json()))
+        self.assertTrue(any('Django' in b['title'] for b in resp.data))
 
         # Ordering descending by publication_year
         resp = self.client.get('/api/books/', {'ordering': '-publication_year'})
         self.assertEqual(resp.status_code, status.HTTP_200_OK)
-        years = [b['publication_year'] for b in resp.json()]
+        years = [b['publication_year'] for b in resp.data]
         self.assertEqual(years, sorted(years, reverse=True))
 
     # ========================
@@ -115,7 +114,7 @@ class BookAPITestCase(APITestCase):
         data = {'title': 'New Book', 'publication_year': 2020, 'author': self.author.id}
         resp = self.client.post('/api/books/', data)
         self.assertEqual(resp.status_code, status.HTTP_201_CREATED)
-        self.assertEqual(resp.json()['owner'], self.owner.id)
+        self.assertEqual(resp.data['owner'], self.owner.id)
 
     def test_create_book_success(self):
         """Test successful book creation with valid data and verification."""
@@ -212,7 +211,7 @@ class BookAPITestCase(APITestCase):
         self.client.credentials(HTTP_AUTHORIZATION='Token ' + self.owner_token.key)
         resp = self.client.patch(url, {'title': 'Updated Title'})
         self.assertEqual(resp.status_code, status.HTTP_200_OK)
-        self.assertEqual(resp.json()['title'], 'Updated Title')
+        self.assertEqual(resp.data['title'], 'Updated Title')
 
     # ========================
     # DELETE TESTS
