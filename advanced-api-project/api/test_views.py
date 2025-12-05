@@ -116,6 +116,16 @@ class BookAPITestCase(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(response.data['owner'], self.owner.id)
 
+    def test_create_with_session_login(self):
+        """Test successful book creation with session authentication using self.client.login()."""
+        # Login using session authentication
+        self.client.login(username='owner', password='pass')
+        data = {'title': 'Session Book', 'publication_year': 2021, 'author': self.author.id}
+        response = self.client.post('/api/books/', data)
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        self.assertEqual(response.data['owner'], self.owner.id)
+        self.assertEqual(response.data['title'], 'Session Book')
+
     def test_create_book_success(self):
         """Test successful book creation with valid data and verification."""
         self.client.credentials(HTTP_AUTHORIZATION='Token ' + self.owner_token.key)
