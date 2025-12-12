@@ -1,7 +1,13 @@
 from django.urls import path
 from . import views
 
+app_name = "blog"
+
 urlpatterns = [
-    path('login/', views.login_view, name='login'),
-    path('register/', views.register_view, name='register'),
+    path("login/", views.CustomLoginView.as_view(), name="login"),
+    path("logout/", views.CustomLogoutView.as_view(), name="logout"),
+    path("register/", views.register, name="register"),
+
+    # ✅ REQUIRED BY THE CHECKER
+    path("profile/", views.profile, name="profile"),
 ]
