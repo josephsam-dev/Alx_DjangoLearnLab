@@ -14,7 +14,7 @@ urlpatterns = [
     # Posts
     path('posts/<int:post_id>/', views.post_detail, name='post_detail'),
 
-    # Comments (CBVs) — **ALX expects these exact patterns**
+    # Comments (CBVs)
     path('post/<int:pk>/comments/new/', CommentCreateView.as_view(), name='add_comment'),
     path('comment/<int:pk>/update/', CommentUpdateView.as_view(), name='edit_comment'),
     path('comment/<int:pk>/delete/', CommentDeleteView.as_view(), name='delete_comment'),
