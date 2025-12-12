@@ -10,9 +10,7 @@
     <header>
         <h1>Welcome to Django Blog</h1>
     </header>
-    <main>
-        <p>This is the base template for the blog.</p>
-    </main>
+    {% block content %}{% endblock %}
     <script src="{% static 'blog/script.js' %}"></script>
 </body>
 </html>
