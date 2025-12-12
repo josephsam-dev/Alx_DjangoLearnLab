@@ -9,8 +9,18 @@
 <body>
     <header>
         <h1>Welcome to Django Blog</h1>
+
+        <!-- Search form goes inside the header or navbar -->
+        <form method="get" action="{% url 'blog:search_posts' %}">
+            <input type="text" name="q" placeholder="Search posts..." required>
+            <button type="submit">Search</button>
+        </form>
     </header>
-    {% block content %}{% endblock %}
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
     <script src="{% static 'blog/script.js' %}"></script>
 </body>
 </html>
