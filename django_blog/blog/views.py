@@ -4,10 +4,11 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.views.generic import CreateView, UpdateView, DeleteView
+from django.views.generic import CreateView, UpdateView, DeleteView, ListView
 from django.urls import reverse_lazy
 from .models import Post, Comment
 from .forms import CommentForm
+
 
 # -----------------------------
 # Authentication Views
@@ -107,3 +108,13 @@ def search_posts(request):
             Q(tags__name__icontains=query)
         ).distinct()
     return render(request, 'blog/search_results.html', {'results': results, 'query': query})
+from django.views.generic import ListView
+
+class PostByTagListView(ListView):
+    model = Post
+    template_name = 'blog/posts_by_tag.html'
+    context_object_name = 'posts'
+
+    def get_queryset(self):
+        tag_slug = self.kwargs.get('tag_slug')
+        return Post.objects.filter(tags__slug=tag_slug)
