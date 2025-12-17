@@ -3,7 +3,6 @@ from rest_framework import serializers
 from rest_framework.authtoken.models import Token
 from .models import User
 
-
 class RegisterSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
 
@@ -20,7 +19,6 @@ class RegisterSerializer(serializers.ModelSerializer):
         )
         Token.objects.create(user=user)
         return user
-
 
 class LoginSerializer(serializers.Serializer):
     username = serializers.CharField()
@@ -39,7 +37,6 @@ class LoginSerializer(serializers.Serializer):
             "username": user.username,
             "token": token.key
         }
-
 
 class ProfileSerializer(serializers.ModelSerializer):
     followers_count = serializers.SerializerMethodField()
