@@ -1,8 +1,13 @@
+# accounts/serializers.py
+"get_user_model().objects.create_user"
 from django.contrib.auth import authenticate
 from rest_framework import serializers
 from rest_framework.authtoken.models import Token
-from .models import User
+from .models import User  # <- Custom User model
 
+# -------------------------------
+# Register Serializer
+# -------------------------------
 class RegisterSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
 
@@ -20,6 +25,9 @@ class RegisterSerializer(serializers.ModelSerializer):
         Token.objects.create(user=user)
         return user
 
+# -------------------------------
+# Login Serializer
+# -------------------------------
 class LoginSerializer(serializers.Serializer):
     username = serializers.CharField()
     password = serializers.CharField(write_only=True)
@@ -38,6 +46,9 @@ class LoginSerializer(serializers.Serializer):
             "token": token.key
         }
 
+# -------------------------------
+# Profile Serializer
+# -------------------------------
 class ProfileSerializer(serializers.ModelSerializer):
     followers_count = serializers.SerializerMethodField()
 
