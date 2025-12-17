@@ -1,3 +1,8 @@
+from rest_framework import generics, permissions
+from .models import Post
+from .serializers import PostSerializer
+
+
 from rest_framework import viewsets
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
