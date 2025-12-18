@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework import generics
 from django.contrib.contenttypes.models import ContentType
+ ["permissions.IsAuthenticated"]
 
 from .models import Post, Like
 from notifications.models import Notification
