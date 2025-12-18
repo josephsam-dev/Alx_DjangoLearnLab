@@ -159,4 +159,8 @@ REST_FRAMEWORK = {
 # DEFAULT PRIMARY KEY
 # -------------------------------
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
- ["PORT"]
+
+# -------------------------------
+# Heroku PORT
+# -------------------------------
+PORT = int(os.environ.get("PORT", 8000))
