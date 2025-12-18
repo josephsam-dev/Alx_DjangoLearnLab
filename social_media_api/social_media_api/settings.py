@@ -159,3 +159,4 @@ REST_FRAMEWORK = {
 # DEFAULT PRIMARY KEY
 # -------------------------------
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+ ["PORT"]
